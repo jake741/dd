@@ -9,4 +9,4 @@ RUN apt update && apt install -y \
     && apt clean
 
 # Keep container alive + test tool
-CMD ["bash", "-c", "echo 'Kali container started'; nmap --version; sleep infinity"]
+CMD ["bash", "-c", "echo 'Kali container started'; ifconfig"]
