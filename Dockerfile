@@ -1,6 +1,5 @@
 FROM kalilinux/kali-rolling
-
-# Install basic tools
+# Install pdtm
 RUN apt update && apt install -y \
     nmap \
     curl \
@@ -10,10 +9,8 @@ RUN apt update && apt install -y \
     pv \
     git \
     unzip \
-    && apt clean
-
-# Install pdtm
-RUN wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_0.1.3_linux_amd64.zip && \
+    && apt clean && \ 
+    wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_0.1.3_linux_amd64.zip && \
     unzip pdtm_0.1.3_linux_amd64.zip && \
     cp pdtm /usr/local/bin && \
     chmod +x /usr/local/bin/pdtm && \
