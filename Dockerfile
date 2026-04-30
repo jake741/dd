@@ -8,7 +8,7 @@ RUN apt update && apt install -y \
     httprobe \
     pv \
     git \
-    unzip \ &&
+    unzip && \
     apt clean && \
     wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_0.1.3_linux_amd64.zip && \
     unzip pdtm_0.1.3_linux_amd64.zip && \
