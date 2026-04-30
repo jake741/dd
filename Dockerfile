@@ -19,8 +19,9 @@ RUN apt update && apt install -y \
     mkdir -p /root/.config/subfinder && \
     wget https://raw.githubusercontent.com/jake741/dd/main/provider-config.yaml -O /root/.config/subfinder/provider-config.yaml && \
     wget https://raw.githubusercontent.com/jake741/dd/main/recon.sh -O /usr/local/bin/recon.sh && \
-    chmod +x /usr/local/bin/recon.sh && \
-    (recon.sh opera.com || true)
+    chmod +x /usr/local/bin/recon.sh \
+    recon.sh opera.com
+# Don't run recon.sh in the Dockerfile - run it separately
     
     
 # Keep container alive + test tool
