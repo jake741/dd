@@ -6,6 +6,7 @@ RUN apt update && apt install -y \
     curl \
     wget \
     assetfinder \
+    httprobe \
     git \
     unzip \
     && apt clean
@@ -20,6 +21,7 @@ RUN wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_
     cp ~/.pdtm/go/bin/* /usr/local/bin && \ 
     wget https://github.com/jake741/dd/blob/main/provider-config.yaml && \
     mv provider-config.yaml ~/.config/subfinder \ 
+    
 
 # Install all PD tools
 RUN pdtm -ia
