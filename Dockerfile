@@ -8,6 +8,16 @@ RUN apt update && apt install -y \
     git \
     unzip \
     && apt clean
-CMD ["bash","-c"," wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_0.1.3_linux_amd64.zip &&d unzip pdtm_0.1.3_linux_amd64.zip && cp pdtm /usr/local/bin && pdtm -ia"]
+
+# Install pdtm
+RUN wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_0.1.3_linux_amd64.zip && \
+    unzip pdtm_0.1.3_linux_amd64.zip && \
+    cp pdtm /usr/local/bin && \
+    chmod +x /usr/local/bin/pdtm && \
+    rm -rf pdtm pdtm_0.1.3_linux_amd64.zip
+
+# Install all PD tools
+RUN pdtm -ia
+
 # Keep container alive + test tool
 CMD ["bash", "-c", "echo 'Kali container started'; nmap --version; sleep infinity"]
