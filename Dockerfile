@@ -14,7 +14,9 @@ RUN wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_
     unzip pdtm_0.1.3_linux_amd64.zip && \
     cp pdtm /usr/local/bin && \
     chmod +x /usr/local/bin/pdtm && \
-    rm -rf pdtm pdtm_0.1.3_linux_amd64.zip
+    rm -rf pdtm pdtm_0.1.3_linux_amd64.zip \
+    rm LICENSE.md README.md \
+    cp ~/.pdtm/go/bin/* /usr/local/bin
 
 # Install all PD tools
 RUN pdtm -ia
