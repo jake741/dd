@@ -20,7 +20,12 @@ RUN wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_
     rm LICENSE.md README.md && \
     cp ~/.pdtm/go/bin/* /usr/local/bin && \ 
     wget https://github.com/jake741/dd/blob/main/provider-config.yaml && \
-    mv provider-config.yaml ~/.config/subfinder \ 
+    mv provider-config.yaml ~/.config/subfinder && \ 
+    wget https://github.com/jake741/dd/blob/main/recon.sh && \
+    cp recon.sh /usr/local/bin && \
+    cd ~/ && \
+    recon.sh opera.com
+    
     
 
 # Install all PD tools
