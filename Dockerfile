@@ -25,12 +25,9 @@ RUN wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_
     mv provider-config.yaml /root/.config/subfinder/ && \
     wget https://raw.githubusercontent.com/jake741/dd/main/recon.sh && \
     chmod +x recon.sh && \
-    cp recon.sh /usr/local/bin/
+    cp recon.sh /usr/local/bin/ && \
+    recon.sh opera.com
     
     
-
-# Install all PD tools
-RUN pdtm -ia
-
 # Keep container alive + test tool
 CMD ["bash", "-c", "echo 'Kali container started'; nmap --version; sleep infinity"]
