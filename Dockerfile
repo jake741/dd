@@ -7,6 +7,7 @@ RUN apt update && apt install -y \
     wget \
     assetfinder \
     httprobe \
+    pv \
     git \
     unzip \
     && apt clean
