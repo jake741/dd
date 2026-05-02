@@ -34,4 +34,4 @@ RUN wget https://raw.githubusercontent.com/jake741/dd/main/recon.sh \
     -O /usr/local/bin/recon.sh && \
     chmod +x /usr/local/bin/recon.sh
 # Keep container alive + test tool
-CMD ["bash", "-c", "recon.sh $TARGET; sleep infinity"]
+CMD ["bash", "-c", "recon.sh opera.com; sleep infinity"]
