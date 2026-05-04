@@ -43,14 +43,12 @@ cd "$OUTDIR"
 
 # ---- Subdomain Enumeration ----
 log "Running subfinder"
-subfinder -all -silent -d "$TARGET" -silent -o subfinder.txt
-
+subfinder -all -silent -d "$TARGET" | tee subfinder.txt
 log "Running assetfinder"
 assetfinder --subs-only "$TARGET" | tee assetfinder.txt
 
 log "Merging subdomains"
-sort -u subfinder.txt assetfinder.txt >> all_subs.txt
-
+sort -u subfinder.txt assetfinder.txt | tee all_subs.txt
 # ---- Alterx ----
 log "Running alterx"
 alterx -l all_subs.txt -silent -o alterx.txt
