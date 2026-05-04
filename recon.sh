@@ -55,11 +55,11 @@ sort -u subfinder.txt assetfinder.txt | tee all_subs.txt > /dev/null
 log "Running alterx"
 alterx -l all_subs.txt -silent -o alterx.txt
 # ---- Merge All Subdomains ----
-cat all_subs.txt alterx.txt | sort -u > all_subs.txt
+cat all_subs.txt alterx.txt | sort -u > all_subs.txt > /dev/null
 
 # ---- HTTP Probe ----
 log "Probing live HTTP services"
-pv all_subs.txt | httprobe -c $HTTPX_THREADS -prefer-https >> httpx.txt
+cat all_subs.txt | httprobe -c $HTTPX_THREADS -prefer-https >> httpx.txt
 
 if [[ "$MODE" == "proxy" ]]; then
     log "Using proxy $PROXY_URL"
