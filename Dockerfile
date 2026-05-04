@@ -35,8 +35,7 @@ RUN wget https://raw.githubusercontent.com/jake741/dd/main/recon.sh \
     -O /usr/local/bin/recon.sh && \
     chmod +x /usr/local/bin/recon.sh
 
-RUN wget https://github.com/jake741/dd/blob/main/automate.sh && \
-mv automate.sh /usr/local/bin/automate.sh && \
+RUN wget https://raw.githubusercontent.com/jake741/dd/main/automate.sh -O /usr/local/bin/automate.sh && \
     chmod +x /usr/local/bin/automate.sh && \
     wget https://github.com/jake741/dd/blob/main/wildcard.txt && \
     mv wildcard.txt ~/wildcard.txt
