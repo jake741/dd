@@ -43,23 +43,23 @@ cd "$OUTDIR"
 
 # ---- Subdomain Enumeration ----
 log "Running subfinder"
-subfinder -all -silent -d "$TARGET" -silent -o subfinder.txt
+subfinder -all -silent -d "$TARGET" | tee subfinder.txt
 
 log "Running assetfinder"
-assetfinder --subs-only "$TARGET" >> assetfinder.txt  
+assetfinder --subs-only "$TARGET" | tee assetfinder.txt
 
 log "Merging subdomains"
-sort -u subfinder.txt assetfinder.txt | tee all_subs.txt 
+sort -u subfinder.txt assetfinder.txt | tee all_subs.txt
 
 # ---- Alterx ----
 log "Running alterx"
 alterx -l all_subs.txt -silent -o alterx.txt
 # ---- Merge All Subdomains ----
-cat all_subs.txt alterx.txt | sort -u > all_subs.txt 
+cat all_subs.txt alterx.txt | sort -u > all_subs.txt
 
 # ---- HTTP Probe ----
 log "Probing live HTTP services"
-cat all_subs.txt | httprobe -c $HTTPX_THREADS -prefer-https >> httpx.txt
+pv all_subs.txt | httprobe -c $HTTPX_THREADS -prefer-https >> httpx.txt
 
 if [[ "$MODE" == "proxy" ]]; then
     log "Using proxy $PROXY_URL"
@@ -94,4 +94,4 @@ rm -f $OUTDIR/subfinder.txt $OUTDIR/assetfinder.txt $OUTDIR/subs.txt $OUTDIR/alt
 
 # ---- Done ----
 log "Recon completed successfully"
-log "Results saved to: $OUTDIR/httpx.txt"
+log "Results saved to: $OUTDIR/live_hosts.txt"
