@@ -59,7 +59,7 @@ cat all_subs.txt alterx.txt | sort -u > all_subs.txt
 
 # ---- HTTP Probe ----
 log "Probing live HTTP services"
-pv all_subs.txt | httprobe -c $HTTPX_THREADS -prefer-https >> httpx.txt
+cat all_subs.txt | httprobe -c $HTTPX_THREADS -prefer-https >> httpx.txt
 
 if [[ "$MODE" == "proxy" ]]; then
     log "Using proxy $PROXY_URL"
