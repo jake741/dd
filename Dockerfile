@@ -19,7 +19,7 @@ RUN wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_
     cp pdtm /usr/local/bin && \
     chmod +x /usr/local/bin/pdtm && \
     rm -rf pdtm_0.1.3_linux_amd64.zip LICENSE.md README.md && \
-    pdtm -ia > /dev/null ; echo 'done_pdtm'
+    pdtm -ia 
 
 # Move tools
 RUN if [ -d /root/.pdtm/go/bin ]; then cp /root/.pdtm/go/bin/* /usr/local/bin || true; fi
