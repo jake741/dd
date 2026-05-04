@@ -43,19 +43,19 @@ cd "$OUTDIR"
 
 # ---- Subdomain Enumeration ----
 log "Running subfinder"
-subfinder -all -silent -d "$TARGET" -silent -o subfinder.txt > /dev/null
+subfinder -all -silent -d "$TARGET" -silent -o subfinder.txt
 
 log "Running assetfinder"
-assetfinder --subs-only "$TARGET" >> assetfinder.txt > /dev/null 
+assetfinder --subs-only "$TARGET" >> assetfinder.txt  
 
 log "Merging subdomains"
-sort -u subfinder.txt assetfinder.txt | tee all_subs.txt > /dev/null
+sort -u subfinder.txt assetfinder.txt | tee all_subs.txt 
 
 # ---- Alterx ----
 log "Running alterx"
 alterx -l all_subs.txt -silent -o alterx.txt
 # ---- Merge All Subdomains ----
-cat all_subs.txt alterx.txt | sort -u > all_subs.txt > /dev/null
+cat all_subs.txt alterx.txt | sort -u > all_subs.txt 
 
 # ---- HTTP Probe ----
 log "Probing live HTTP services"
