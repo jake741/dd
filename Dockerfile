@@ -14,7 +14,8 @@ RUN apt update && apt install -y \
  && apt clean
 
 # Install pdtm
-RUN wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_0.1.3_linux_amd64.zip && \
+RUN cd ~/ && \
+    wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_0.1.3_linux_amd64.zip && \
     unzip pdtm_0.1.3_linux_amd64.zip && \
     cp pdtm /usr/local/bin && \
     chmod +x /usr/local/bin/pdtm && \
@@ -33,6 +34,11 @@ RUN mkdir -p /root/.config/subfinder && \
 RUN wget https://raw.githubusercontent.com/jake741/dd/main/recon.sh \
     -O /usr/local/bin/recon.sh && \
     chmod +x /usr/local/bin/recon.sh
+RUN wget https://github.com/jake741/dd/blob/main/automate.sh \
+-O /usr/local/bin/automate.sh && \
+    chmod +x /usr/local/bin/automate.sh && \
+    wget https://github.com/jake741/dd/blob/main/wildcard.txt \
+    -O ~/
 # Keep container alive + test tool
 #CMD ["bash", "-c", "echo 'Kali container started'; nmap --version;  sleep infinity"]
-CMD ["bash", "-c","echo 'start_tool'; cd ~/ ; recon.sh osp.opera.software; sleep infinity"]
+CMD ["bash", "-c","echo 'start_tool'; cd ~/ ; cat wildcard.txt | automate.sh; sleep infinity"]
