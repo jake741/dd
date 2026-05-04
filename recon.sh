@@ -43,12 +43,14 @@ cd "$OUTDIR"
 
 # ---- Subdomain Enumeration ----
 log "Running subfinder"
-subfinder -all -silent -d "$TARGET" | tee subfinder.txt
+subfinder -all -silent -d "$TARGET" -silent -o subfinder.txt > /dev/null
+
 log "Running assetfinder"
-assetfinder --subs-only "$TARGET" | tee assetfinder.txt
+assetfinder --subs-only "$TARGET" >> assetfinder.txt > /dev/null 
 
 log "Merging subdomains"
-sort -u subfinder.txt assetfinder.txt | tee all_subs.txt
+sort -u subfinder.txt assetfinder.txt | tee all_subs.txt > /dev/null
+
 # ---- Alterx ----
 log "Running alterx"
 alterx -l all_subs.txt -silent -o alterx.txt
@@ -57,7 +59,7 @@ cat all_subs.txt alterx.txt | sort -u > all_subs.txt
 
 # ---- HTTP Probe ----
 log "Probing live HTTP services"
-cat all_subs.txt | httprobe -c $HTTPX_THREADS -prefer-https >> httpx.txt
+pv all_subs.txt | httprobe -c $HTTPX_THREADS -prefer-https >> httpx.txt
 
 if [[ "$MODE" == "proxy" ]]; then
     log "Using proxy $PROXY_URL"
