@@ -34,6 +34,7 @@ RUN mkdir -p /root/.config/subfinder && \
 RUN wget https://raw.githubusercontent.com/jake741/dd/main/recon.sh \
     -O /usr/local/bin/recon.sh && \
     chmod +x /usr/local/bin/recon.sh
+
 RUN wget https://github.com/jake741/dd/blob/main/automate.sh && \
 mv automate.sh /usr/local/bin/automate.sh && \
     chmod +x /usr/local/bin/automate.sh && \
@@ -41,4 +42,4 @@ mv automate.sh /usr/local/bin/automate.sh && \
     mv wildcard.txt ~/wildcard.txt
 # Keep container alive + test tool
 #CMD ["bash", "-c", "echo 'Kali container started'; nmap --version;  sleep infinity"]
-CMD ["bash", "-c","echo 'start_tool'; cd ~/ ; cat wildcard.txt | automate.sh; sleep infinity"]
+CMD ["bash", "-c","echo 'start_tool'; cd ~/ ; cat wildcard.txt | automate.sh ; sleep infinity"]
