@@ -94,4 +94,4 @@ rm -f $OUTDIR/subfinder.txt $OUTDIR/assetfinder.txt $OUTDIR/subs.txt $OUTDIR/alt
 
 # ---- Done ----
 log "Recon completed successfully"
-log "Results saved to: $OUTDIR/live_hosts.txt"
+log "Results saved to: $OUTDIR/httpx.txt"
