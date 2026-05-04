@@ -41,4 +41,4 @@ RUN wget https://raw.githubusercontent.com/jake741/dd/main/automate.sh \
     -O ~/wildcard.txt
 # Keep container alive + test tool
 #CMD ["bash", "-c", "echo 'Kali container started'; nmap --version;  sleep infinity"]
-CMD ["bash", "-c","echo 'start_tool'; cd ~/ ; cat wildcard.txt | automate.sh ; echo 'ALL_DONE' ; sleep infinity"]
+CMD ["bash", "-c","echo 'start_tool'; cd ~/ ; cat wildcard.txt | automate.sh > /dev/null ; echo 'ALL_DONE' ; sleep infinity"]
