@@ -1,0 +1,6 @@
+discord:
+  - id: "tool-output"
+    discord_channel: "#lol"
+    discord_username: "demon_god010101"
+    discord_format: "{{data}}" # dont change this!!
+    discord_webhook_url: "https://discord.com/api/webhooks/1500943957725675642/v8TkSzes2ecgW7DjNytHom3sCpBPYsvA1VC3JXFg7nNluTfOTTlNDeVvK_hNmlLbtdhL"
