@@ -25,6 +25,10 @@ RUN wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_
 # Move tools
 RUN if [ -d /root/.pdtm/go/bin ]; then cp /root/.pdtm/go/bin/* /usr/local/bin || true; fi
 
+RUN mkdir -p /root/.config/notify && \
+    wget https://raw.githubusercontent.com/jake741/dd/refs/heads/main/provider_config.yaml \
+    -O /root/config/notify/provider-config.yaml
+
 # Config
 RUN mkdir -p /root/.config/subfinder && \
     wget https://raw.githubusercontent.com/jake741/dd/main/provider-config.yaml \
@@ -41,4 +45,4 @@ RUN wget https://raw.githubusercontent.com/jake741/dd/main/automate.sh \
     wget https://raw.githubusercontent.com/jake741/dd/refs/heads/main/wildcard.txt 
 # Keep container alive + test tool
 #CMD ["bash", "-c", "echo 'Kali container started'; nmap --version;  sleep infinity"]
-CMD ["bash", "-c","echo 'start_tool'; cat wildcard.txt | automate.sh > /dev/null ; echo 'ALL_DONE' ; sleep infinity"]
+CMD ["bash", "-c","echo 'start_tool'; cat wildcard.txt | automate.sh ; echo 'ALL_DONE' ; sleep infinity"]
