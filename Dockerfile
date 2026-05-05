@@ -26,8 +26,8 @@ RUN wget https://github.com/projectdiscovery/pdtm/releases/download/v0.1.3/pdtm_
 RUN if [ -d /root/.pdtm/go/bin ]; then cp /root/.pdtm/go/bin/* /usr/local/bin || true; fi
 
 RUN mkdir -p /root/.config/notify && \
-    wget https://raw.githubusercontent.com/jake741/dd/refs/heads/main/provider_config.yaml -O /root/config/notify/provider-config.yaml
-
+    wget https://raw.githubusercontent.com/jake741/dd/main/provider_config.yaml \
+    -O /root/.config/notify/provider-config.yaml
 # Config
 RUN mkdir -p /root/.config/subfinder && \
     wget https://raw.githubusercontent.com/jake741/dd/main/provider-config.yaml -O /root/.config/subfinder/provider-config.yaml
